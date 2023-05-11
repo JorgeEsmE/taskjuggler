@@ -70,6 +70,8 @@ resource dev3 "Peter Green" {
 }
 resource dev4 "Jorge Esteban" {
   email "816147@unizar.es"
+  workinghours mon - fri 15:00 - 19:00
+  workinghours sat,sun off
   rate 2326.07
   actual:leaves project 2023-05-07 - 2023-05-12
 }
@@ -100,7 +102,7 @@ task WMGame "Web & Mobile Game" {
     # It is necessary to “purge” the “chargeset” because it has been assigned previously to other variable 
     purge chargeset
     chargeset back
-    responsible dev1
+    responsible dev4
     depends WMGame.tgdesign
     task tBEd "Back End General Design" {
       # The effort to finish this task is 5 man-days.
