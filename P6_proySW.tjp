@@ -45,6 +45,7 @@ rate 145.2
 account cost "Project Cost" {
   account manag "Management"
   account wFront "Web Front-End"
+  account mFront "Web Front-End"
   account back "Back-End"
 }
 account rev "Payments"
@@ -143,6 +144,33 @@ task WMGame "Web & Mobile Game" {
       effort 6d
       allocate dev1
       depends WMGame.twebF.tFEc
+    }    
+  }
+
+  task tmovilF "Movil Front End" {
+    purge chargeset
+    chargeset mFront
+    responsible dev3
+    depends WMGame.tback.tBEd
+    task tmGUId "Movil GUI Design" {
+      effort 9d
+      actual:effort 15d
+      allocate dev3
+      journalentry 2023-04-11 "Problems with the GUI design tool" {
+        author dev3
+        alert yellow
+        summary "The tool used for the GUI design has given me a lot of problems. I recommend to look for other one."
+      }
+    }
+    task tmFEc "Movil Front End Construction" {
+      effort 15d
+      allocate dev2, dev3
+      depends WMGame.tmovilF.tmGUId
+    }
+    task tmFEt "Movil Front End Test" {
+      effort 6d
+      allocate dev1
+      depends WMGame.tmovilF.tmFEc
     }    
   }
 
