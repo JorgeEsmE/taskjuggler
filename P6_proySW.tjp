@@ -73,7 +73,6 @@ resource dev4 "Jorge Esteban" {
   workinghours mon - fri 15:00 - 19:00
   workinghours sat,sun off
   rate 2326.07
-  actual:leaves project 2023-05-07 - 2023-05-12
 }
 
 # Now we specify the work packages. The whole project is described as
