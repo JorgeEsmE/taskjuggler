@@ -308,7 +308,7 @@ textreport frame "" {
     center '<[report id="overview"]>'
   }
 
-    textreport overvi "inicialP" {
+    textreport inip "inicialP" {
     formats html
     center '<[report id="inicialP"]>'
   }
