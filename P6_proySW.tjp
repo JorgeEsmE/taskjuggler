@@ -5,7 +5,7 @@
  * some elements of it
  */
 
-project pSix "Web Game"  2023-03-15 +5m {
+project pSix "Web Game"  2023-03-15 +3m {
   # Set the default time zone for the project. If not specified, UTC
   # is used.
   timezone "Europe/Paris"
@@ -71,7 +71,7 @@ resource dev3 "Peter Green" {
 resource dev4 "Jorge Esteban" {
   email "816147@unizar.es"
   workinghours mon - fri 15:00 - 19:00
-  workinghours sat,sun off
+  workinghours sat, sun off
   rate 2326.07
 }
 
@@ -132,16 +132,9 @@ task WMGame "Web & Mobile Game" {
     chargeset back
     responsible dev1
     depends WMGame.tgdesign
-    task tDESd "Despliegue General Design" {
-      # The effort to finish this task is 5 man-days.
-      effort 5d
-      allocate dev1
-    }
     task teval "Evaluación del despliegue" {
-      effort 3d
-      actual:effort 11d
+      effort 2d
       allocate dev1, dev2
-      depends WMGame.tdesBE.tDESd
       journalentry 2023-03-28 "Game logic completed before deadline" {
         author boss
         alert green
@@ -150,7 +143,6 @@ task WMGame "Web & Mobile Game" {
     }
     task tdes "Decisión del despliegue" {
       effort 1d
-      actual:effort 11d
       allocate dev1, dev2
       depends WMGame.tdesBE.teval
       journalentry 2023-03-28 "Game logic completed before deadline" {
@@ -160,7 +152,7 @@ task WMGame "Web & Mobile Game" {
       }
     }
     task tdesp "Despliegue" {
-      effort 10d
+      effort 2d
       actual:effort 11d
       allocate dev1, dev2
       depends WMGame.tdesBE.tdes
@@ -179,7 +171,6 @@ task WMGame "Web & Mobile Game" {
     depends WMGame.tback.tBEd
     task tGUId "Web GUI Design" {
       effort 9d
-      actual:effort 15d
       allocate dev3
       journalentry 2023-04-11 "Problems with the GUI design tool" {
         author dev3
@@ -188,7 +179,7 @@ task WMGame "Web & Mobile Game" {
       }
     }
     task tFEc "Web Front End Construction" {
-      effort 15d
+      effort 10d
       allocate dev2, dev3
       depends WMGame.twebF.tGUId
     }
@@ -215,7 +206,7 @@ task WMGame "Web & Mobile Game" {
       }
     }
     task tmFEc "Movil Front End Construction" {
-      effort 15d
+      effort 10d
       allocate dev2, dev3
       depends WMGame.tmovilF.tmGUId
     }
