@@ -120,6 +120,52 @@ task WMGame "Web & Mobile Game" {
     }
   }
 
+  task tdesBE "Despliegue Back End" {
+    # It is necessary to “purge” the “chargeset” because it has been assigned previously to other variable 
+    purge chargeset
+    chargeset back
+    responsible dev1
+    depends WMGame.tgdesign
+    task tDESd "Despliegue General Design" {
+      # The effort to finish this task is 5 man-days.
+      effort 5d
+      allocate dev1
+    }
+    task teval "Evaluación del despliegue" {
+      effort 3d
+      actual:effort 11d
+      allocate dev1, dev2
+      depends WMGame.tdesBE.tDESd
+      journalentry 2023-03-28 "Game logic completed before deadline" {
+        author boss
+        alert green
+        summary "The team has ended the game logic before deadline."
+      }
+    }
+    task tdes "Decisión del despliegue" {
+      effort 1d
+      actual:effort 11d
+      allocate dev1, dev2
+      depends WMGame.tdesBE.teval
+      journalentry 2023-03-28 "Game logic completed before deadline" {
+        author boss
+        alert green
+        summary "The team has ended the game logic before deadline."
+      }
+    }
+    task tdesp "Despliegue" {
+      effort 10d
+      actual:effort 11d
+      allocate dev1, dev2
+      depends WMGame.tdesBE.tdes
+      journalentry 2023-03-28 "Game logic completed before deadline" {
+        author boss
+        alert green
+        summary "The team has ended the game logic before deadline."
+      }
+    }
+  }
+
   task twebF "Web Front End" {
     purge chargeset
     chargeset wFront
